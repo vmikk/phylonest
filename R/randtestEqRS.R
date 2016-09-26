@@ -19,18 +19,8 @@ randtestEqRS <- function(df, dis = NULL, structures = NULL, formula = c("QE", "E
         if (e > 0.00000001) 
           warning("be careful that rownames in df should be in the same order as rownames in structures")
       }
-      checknested <- function(forstru) {
-        n <- ncol(forstru)
-        for (i in 1:(n - 1)) {
-          tf <- table(forstru[, c(i, i + 1)])
-          niv <- apply(tf, 1, function(x) sum(x != 0))
-          if (any(niv != 1)) {
-            stop(paste("non hierarchical design for structures, column", i, "is not nested in column", i + 1))
-          }
-        }
-      }
       if (ncol(structures) > 1) 
-        checknested(structures)
+        .checknested(structures)
     }
     alter <- alter[1]
     if (is.null(structures)) {

@@ -64,18 +64,8 @@ EqRao <- function(df, dis = NULL, structures = NULL, option = c("eq", "normed1",
       if (e > 0.00000001) 
         warning("be careful that rownames in df should be in the same order as rownames in structures")
     }
-    checknested <- function(forstru) {
-      n <- ncol(forstru)
-      for (i in 1:(n - 1)) {
-        tf <- table(forstru[, c(i, i + 1)])
-        niv <- apply(tf, 1, function(x) sum(x != 0))
-        if (any(niv != 1)) {
-          stop(paste("non hierarchical design for structures, column", i, "is not nested in column", i + 1))
-        }
-      }
-    }
     if (ncol(structures) > 1) 
-      checknested(structures)
+      .checknested(structures)
   }
   P <- as.data.frame(sweep(df, 1, rowSums(df), "/"))
   if (wopt[1] == "speciesab") {
@@ -125,10 +115,7 @@ EqRao <- function(df, dis = NULL, structures = NULL, option = c("eq", "normed1",
     if (length(levels(factor(structures[, 1]))) == nrow(df)) 
       stop("Each site belongs to a distinct level in the first column of structures, this first column is useless, remove it and re-run")
   }
-  diversity <- function(x) {
-    if (sum(x) == 0) 
-      return(0) else return(t(x) %*% d %*% x)
-  }
+
   discintra <- function(samples) {
     Ng <- as.matrix(samples)
     lesnoms <- colnames(samples)
@@ -149,8 +136,9 @@ EqRao <- function(df, dis = NULL, structures = NULL, option = c("eq", "normed1",
     rownames(dg2) <- lesnoms
     return(dg2)
   }
+  
   if (is.null(structures)) {
-    div <- sapply(as.data.frame(t(P)), diversity)
+    div <- sapply(as.data.frame(t(P)), .diversity)
     if (metmean == "arithmetic") 
       alphaEq <- sum(w * (1/(1 - div))) else alphaEq <- 1/(1 - sum(w * div))
       beta <- t(w) %*% discintra(as.data.frame(t(P))) %*% w
@@ -172,7 +160,7 @@ EqRao <- function(df, dis = NULL, structures = NULL, option = c("eq", "normed1",
         colnames(res) <- "Normed contributions to diversity"
       }
   } else {
-    div <- sapply(as.data.frame(t(P)), diversity)
+    div <- sapply(as.data.frame(t(P)), .diversity)
     if (metmean == "arithmetic") 
       alphaEq <- sum(w * (1/(1 - div))) else alphaEq <- 1/(1 - sum(w * div))
       if (!(is.data.frame(structures))) 
