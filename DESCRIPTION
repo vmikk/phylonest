@@ -1,15 +1,20 @@
 Package: phylonest
 Version: 0.0-1
 Date: 2016-09-23
-Title: Equivalent numbers for biodiversity in a nested hierarchy of multiple scales.
+Title: Equivalent numbers for biodiversity in a nested hierarchy of multiple
+    scales.
 Authors@R: c(
         person("Sandrine", "Pavoine", role = "aut", email = "pavoine@mnhn.fr"),
         person("Eric", "Marcon", role = "aut", email = "Eric.Marcon@ecofog.gf"),
         person("Carlo", "Ricotta", role = "aut", email = "carlo.ricotta@uniroma1.it"),
         person("Vladimir", "Mikryukov", role = c("cre", "ctb"), email = "vmikryukov@gmail.com"))
-Depends: R (>= 3.1.0), ade4
-Description: Functions to estimate species, phylogenetic or functional diversity at different (hierarchical) scales.
+Depends:
+    R (>= 3.1.0),
+    ade4
+Description: Functions to estimate species, phylogenetic or functional diversity
+    at different (hierarchical) scales.
 License: GPL (>= 2)
 URL: https://github.com/vmikk/phylonest
 BugReports: https://github.com/vmikk/phylonest/issues
 Encoding: UTF-8
+RoxygenNote: 5.0.1
