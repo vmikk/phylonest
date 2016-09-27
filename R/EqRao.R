@@ -1,4 +1,69 @@
 # Third decomposition of diversity
+#' @title Third decomposition of diversity introduced in Pavoine et al. 2016.
+#' @description Use when the interest is in beta diversity expressed in terms of pairwise dissimilarities among sites (within regions) and among regions and/or sites within a region have different weights and regions have different weights (due, e.g., to uneven sampling pressures, uneven size of sites or regions).
+#'
+#' @param df Dataframe or matrix with sites as rows and species as columns. Entries are abundances of species within sites.
+#' @param dis Dissimilarity among species (NULL or class 'dist').
+#' @param structures Data frame that contains the name of the group (row) of an level (column) to which the site belongs. Sites in structures should be in the same order as in df. Default is NULL.
+#' @param option Rescaling type ("eq", "normed1" or "normed2").
+#' @param formula Quadratic entropy formula ("QE", "EDI"). "QE" is default.
+#' @param wopt Site weighting type ("even", "speciesab"). Default is "even".
+#' @param tol A tolerance threshold (a value less than tol is considered equal to zero).
+#' @param metmean Mean type - "arithmetic" or "harmonic" (default).
+#'
+#' @details
+#' Rescaling types:
+#' - "eq" - the diversity components are given in terms of equivalent number of species, sites, regions etc.
+#' - "normed1" - the normed components of diversity will be returned with formula (1 – 1 / E) / (1 - 1 / Emax)
+#' - "normed2" - the normed components of diversity will be returned with formula (E – 1) / (Emax - 1).
+#' For Eα and Eγ, Emax=S (the number of species in the data set).
+#'
+#' Formula type:
+#' 
+#'
+#'
+#' Site weighting type:
+#' If wopt = "speciesab", then the sites will be weighted by their sum of species’ abundances.
+#' If wopt ="even", the sites will be evenly weighted within the factors defined by the parameter 'structures'.
+#'
+#' For the associated permutation test see \code{\link{randtestEqRao}}.
+#'
+#' @return A data frame with each component of the selected diversity decomposition.
+#' @author Sandrine Pavoine, Eric Marcon, Carlo Ricotta.
+#' @references Pavoine, S., Marcon, E. and Ricotta, C. (2016), ‘Equivalent numbers’ for species, phylogenetic or functional diversity in a nested hierarchy of multiple scales. Methods Ecol Evol. DOI:10.1111/2041-210X.12591
+#' @seealso \code{\link{randtestEqRao}}, \code{\link{EqRS}}, \code{\link{EqRSintra}}.
+#' 
+#' @examples
+#' data(macroloire)
+#' # Taxonomic dissimilarities among species:
+#' dTaxo <- dist.taxo(macroloire$taxo)^2/2
+#' dTaxo <- dTaxo/max(dTaxo)
+#' # Size-based dissimilarities among species
+#' dSize <- dist.prop(macroloire$traits[ ,1:4], method = 2)
+#' # Dissimilarities among species in terms of feeding categories
+#' dFeed <- dist.prop(macroloire$traits[ ,5:11], method = 2)
+#' # Dissimilarities among species in terms of both size and feeding categories
+#' dSF <- (dSize+dFeed)/2
+#' 
+#' # Table with sites as rows (stations), species as columns and abundances as entries
+#' ab <- as.data.frame(t(macroloire$fau))
+#' # Table with sites as rows and one column only. Entries indicate the geological region associated with each site
+#' stru <- macroloire$envir["Morphoregion"]
+#' 
+#' EqRao(ab, , stru, option="eq")
+#' EqRao(ab, dTaxo, stru, formula = "QE", option="eq")
+#' EqRao(ab, dSize, stru, formula = "QE", option="eq")
+#' EqRao(ab, dFeed, stru, formula = "QE", option="eq")
+#' EqRao(ab, dSF, stru, formula = "QE", option="eq")
+#' 
+#' EqRao(ab, , stru, option="normed2")
+#' EqRao(ab, dTaxo, stru, formula = "QE", option="normed2")
+#' EqRao(ab, dSize, stru, formula = "QE", option="normed2")
+#' EqRao(ab, dFeed, stru, formula = "QE", option="normed2")
+#' EqRao(ab, dSF, stru, formula = "QE", option="normed2")
+#'
+#' @export
+
 EqRao <- function(df, dis = NULL, structures = NULL, option = c("eq", "normed1", "normed2"), 
                   formula = c("QE", "EDI"), wopt = c("even", "speciesab"), tol = 0.00000001,
                   metmean = c("harmonic", "arithmetic")) {

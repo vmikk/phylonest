@@ -1,4 +1,46 @@
 # Apportionment of quadratic entropy
+#' @title Apportionment of quadratic entropy.
+#'
+#' @param df Dataframe or matrix with sites as rows and species as columns. Entries are abundances of species within sites.
+#' @param dis Dissimilarity among species (NULL or class 'dist').
+#' @param structures Data frame that contains the name of the group (row) of an level (column) to which the site belongs. Sites in structures should be in the same order as in df. Default is NULL.
+#' @param formula Quadratic entropy formula ("QE", "EDI"). "QE" is default.
+#' @param wopt Site weighting type ("even", "speciesab"). Default is "even".
+#' @param tol A tolerance threshold (a value less than tol is considered equal to zero).
+#'
+#' @details
+#' For the associated permutation test see \code{\link{randtestapqe}}.
+#'
+#' @return A data frame with each component of the selected diversity decomposition.
+#' @author Sandrine Pavoine, Eric Marcon, Carlo Ricotta.
+#' @references Pavoine, S., Marcon, E. and Ricotta, C. (2016), ‘Equivalent numbers’ for species, phylogenetic or functional diversity in a nested hierarchy of multiple scales. Methods Ecol Evol. DOI:10.1111/2041-210X.12591
+#' @seealso \code{\link{randtestEqRSintra}}, \code{\link{EqRS}}, \code{\link{EqRao}}.
+#' 
+#' @examples
+#' data(macroloire)
+#' # Taxonomic dissimilarities among species:
+#' dTaxo <- dist.taxo(macroloire$taxo)^2/2
+#' dTaxo <- dTaxo/max(dTaxo)
+#' # Size-based dissimilarities among species
+#' dSize <- dist.prop(macroloire$traits[ ,1:4], method = 2)
+#' # Dissimilarities among species in terms of feeding categories
+#' dFeed <- dist.prop(macroloire$traits[ ,5:11], method = 2)
+#' # Dissimilarities among species in terms of both size and feeding categories
+#' dSF <- (dSize+dFeed)/2
+#' 
+#' # Table with sites as rows (stations), species as columns and abundances as entries
+#' ab <- as.data.frame(t(macroloire$fau))
+#' # Table with sites as rows and one column only. Entries indicate the geological region associated with each site
+#' stru <- macroloire$envir["Morphoregion"]
+#' 
+#' wapqe(ab, , stru, formula = "QE")
+#' wapqe(ab, dTaxo, stru, formula = "QE")
+#' wapqe(ab, dSize, stru, formula = "QE")
+#' wapqe(ab, dFeed, stru, formula = "QE")
+#' wapqe(ab, dSF, stru, formula = "QE")
+#' 
+#' @export
+
 wapqe <- function(df, dis = NULL, structures = NULL, formula = c("QE", "EDI"),
                   wopt = c("even", "speciesab"), tol = 0.00000001) {
   dfold <- df

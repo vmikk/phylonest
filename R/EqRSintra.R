@@ -1,4 +1,54 @@
-# Second decomposition of diversit
+# Second decomposition of diversity
+#' @title Second decomposition of diversity introduced in Pavoine et al. 2016.
+#' @description Use when the interest is in multiple-site (within regions) and multiple-region beta diversity, sites within a region can be given equal weights and regions can be given equal weights but the sampling design is uneven (different numbers of sites within regions).
+#'
+#' @param df Dataframe or matrix with sites as rows and species as columns. Entries are abundances of species within sites.
+#' @param dis Dissimilarity among species (NULL or class 'dist').
+#' @param structures Data frame that contains the name of the group (row) of an level (column) to which the site belongs. Sites in structures should be in the same order as in df. Default is NULL.
+#' @param option Rescaling type ("eq", "normed1" or "normed2").
+#' @param formula Quadratic entropy formula ("QE", "EDI"). "QE" is default.
+#' @param tol A tolerance threshold (a value less than tol is considered equal to zero).
+#' @param metmean Mean type - "arithmetic" or "harmonic" (default).
+#'
+#' @details
+#' For the associated permutation test see \code{\link{randtestEqRSintra}}.
+#'
+#' @return A data frame with each component of the selected diversity decomposition.
+#' @author Sandrine Pavoine, Eric Marcon, Carlo Ricotta.
+#' @references Pavoine, S., Marcon, E. and Ricotta, C. (2016), ‘Equivalent numbers’ for species, phylogenetic or functional diversity in a nested hierarchy of multiple scales. Methods Ecol Evol. DOI:10.1111/2041-210X.12591
+#' @seealso \code{\link{randtestEqRSintra}}, \code{\link{EqRS}}, \code{\link{EqRao}}.
+#' 
+#' @examples
+#' data(macroloire)
+#' # Taxonomic dissimilarities among species:
+#' dTaxo <- dist.taxo(macroloire$taxo)^2/2
+#' dTaxo <- dTaxo/max(dTaxo)
+#' # Size-based dissimilarities among species
+#' dSize <- dist.prop(macroloire$traits[ ,1:4], method = 2)
+#' # Dissimilarities among species in terms of feeding categories
+#' dFeed <- dist.prop(macroloire$traits[ ,5:11], method = 2)
+#' # Dissimilarities among species in terms of both size and feeding categories
+#' dSF <- (dSize+dFeed)/2
+#' 
+#' # Table with sites as rows (stations), species as columns and abundances as entries
+#' ab <- as.data.frame(t(macroloire$fau))
+#' # Table with sites as rows and one column only. Entries indicate the geological region associated with each site
+#' stru <- macroloire$envir["Morphoregion"]
+#' 
+#' EqRSintra(ab, , stru, option="eq")
+#' EqRSintra(ab, dTaxo, stru, formula = "QE", option="eq")
+#' EqRSintra(ab, dSize, stru, formula = "QE", option="eq")
+#' EqRSintra(ab, dFeed, stru, formula = "QE", option="eq")
+#' EqRSintra(ab, dSF, stru, formula = "QE", option="eq")
+#' 
+#' EqRSintra(ab, , stru, option="normed2")
+#' EqRSintra(ab, dTaxo, stru, formula = "QE", option="normed2")
+#' EqRSintra(ab, dSize, stru, formula = "QE", option="normed2")
+#' EqRSintra(ab, dFeed, stru, formula = "QE", option="normed2")
+#' EqRSintra(ab, dSF, stru, formula = "QE", option="normed2")
+#' 
+#' @export
+
 EqRSintra <- function(df, dis = NULL, structures = NULL, option = c("eq", "normed1", "normed2"), 
                       formula = c("QE", "EDI"), tol = 0.00000001, metmean = c("harmonic", "arithmetic")) {
   metmean <- metmean[1]

@@ -1,4 +1,80 @@
 # Permutation test for wapqe
+#' @title Permutation test for the apportionment of quadratic entropy (\code{\link{wapqe}}).
+#'
+#' @param df Dataframe or matrix with sites as rows and species as columns. Entries are abundances of species within sites.
+#' @param dis Dissimilarity among species (NULL or class 'dist').
+#' @param structures Data frame that contains the name of the group (row) of an level (column) to which the site belongs. Sites in structures should be in the same order as in df. Default is NULL.
+#' @param formula Quadratic entropy formula ("QE", "EDI"). "QE" is default.
+#' @param wopt Site weighting type ("even", "speciesab"). Default is "even".
+#' @param level Level to test. Provide a number between 1 and 1+the number of columns in structures. The number is discarded if the parameter 'structures' is set to NULL.
+#' @param nrep The number of permutations.
+#' @param alter Alternative hypothesis type ("greater" (default), "less" or "two-sided").
+#' @param tol A tolerance threshold (a value less than tol is considered equal to zero).
+#'
+#' @details
+#' Level:
+#' If structures is different from NULL then 1 means test for differences among sites, within the levels of the first factor given in parameter 'structures' (column 1), 2 means test for differences among levels of the first factor given in parameter ‘structures’ (column 1) but within levels of the second factor given in parameter 'structures' (column 2) (if available), etc.
+#'
+#' @return A list of class 'randtest', see \code{\link{randtest}}.
+#' @author Sandrine Pavoine, Eric Marcon, Carlo Ricotta.
+#' @references Pavoine, S., Marcon, E. and Ricotta, C. (2016), ‘Equivalent numbers’ for species, phylogenetic or functional diversity in a nested hierarchy of multiple scales. Methods Ecol Evol. DOI:10.1111/2041-210X.12591
+#' @seealso \code{\link{wapqe}}, \code{\link{randtest}}.
+#'
+#' @examples
+#' data(macroloire)
+#' # Taxonomic dissimilarities among species:
+#' dTaxo <- dist.taxo(macroloire$taxo)^2/2
+#' dTaxo <- dTaxo/max(dTaxo)
+#' # Size-based dissimilarities among species
+#' dSize <- dist.prop(macroloire$traits[ ,1:4], method = 2)
+#' # Dissimilarities among species in terms of feeding categories
+#' dFeed <- dist.prop(macroloire$traits[ ,5:11], method = 2)
+#' # Dissimilarities among species in terms of both size and feeding categories
+#' dSF <- (dSize+dFeed)/2
+#' 
+#' # Table with sites as rows (stations), species as columns and abundances as entries
+#' ab <- as.data.frame(t(macroloire$fau))
+#' # Table with sites as rows and one column only. Entries indicate the geological region associated with each site
+#' stru <- macroloire$envir["Morphoregion"]
+#' 
+#' # Tests for dissimilarities among sites within regions:
+#' 
+#' aGS1 <- randtestapqe(ab, , stru, formula = "QE", level=1, nrep=999)
+#' aGS1
+#' plot(aGS1)
+#' aTaxo1 <- randtestapqe(ab, dTaxo, stru, formula = "QE", level=1, nrep=999)
+#' aTaxo1
+#' plot(aTaxo1)
+#' aSize1 <- randtestapqe(ab, dSize, stru, formula = "QE", level=1, nrep=999)
+#' aSize1
+#' plot(aSize1)
+#' aFeed1 <- randtestapqe(ab, dFeed, stru, formula = "QE", level=1, nrep=999)
+#' aFeed1
+#' plot(aFeed1)
+#' aSF1 <- randtestapqe(ab, dSF, stru, formula = "QE", level=1, nrep=999)
+#' aSF1
+#' plot(aSF1)
+#' 
+#' # Tests for dissimilarities among regions:
+#' 
+#' aGS2 <- randtestapqe(ab, , stru, formula = "QE", level=2, nrep=999)
+#' aGS2
+#' plot(aGS2)
+#' aTaxo2 <- randtestapqe(ab, dTaxo, stru, formula = "QE", level=2, nrep=999)
+#' aTaxo2
+#' plot(aTaxo2)
+#' aSize2 <- randtestapqe(ab, dSize, stru, formula = "QE", level=2, nrep=999)
+#' aSize2
+#' plot(aSize2)
+#' aFeed2 <- randtestapqe(ab, dFeed, stru, formula = "QE", level=2, nrep=999)
+#' aFeed2
+#' plot(aFeed2)
+#' aSF2 <- randtestapqe(ab, dSF, stru, formula = "QE", level=2, nrep=999)
+#' aSF2
+#' plot(aSF2)
+#' 
+#' @export
+
 randtestapqe <- function(df, dis = NULL, structures = NULL, formula = c("QE", "EDI"), 
                          wopt = c("even", "speciesab"), level = 1, nrep = 99,
                          alter = c("greater", "less", "two-sided"), tol = 0.00000001) {
