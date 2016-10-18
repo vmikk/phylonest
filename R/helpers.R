@@ -16,7 +16,7 @@
 
 
 ## from EqRao & EqRSintra
-.diversity <- function(x) {
+.diversity <- function(x, d) {
   if (sum(x) == 0) 
     return(0) else return(t(x) %*% d %*% x)
 }
