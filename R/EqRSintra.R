@@ -153,7 +153,8 @@ EqRSintra <- function(df, dis = NULL, structures = NULL, option = c("eq", "norme
   a <- apqe(as.data.frame(t(df)), sqrt(2 * as.dist(d)), structures)
   options(warn = op)
   dfprop <- sweep(df, 1, rowSums(df), "/")
-  divsites <- sapply(as.data.frame(t(dfprop)), .diversity)
+  
+      sites <- sapply(as.data.frame(t(dfprop)), .diversity, d=d)
   if (metmean == "arithmetic") {
     alphaEQ <- sum(w * (1/(1 - divsites)))
   } else {
