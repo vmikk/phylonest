@@ -203,7 +203,7 @@ EqRao <- function(df, dis = NULL, structures = NULL, option = c("eq", "normed1",
   }
   
   if (is.null(structures)) {
-    div <- sapply(as.data.frame(t(P)), .diversity)
+    div <- sapply(as.data.frame(t(P)), .diversity, d=d)
     if (metmean == "arithmetic") 
       alphaEq <- sum(w * (1/(1 - div))) else alphaEq <- 1/(1 - sum(w * div))
       beta <- t(w) %*% discintra(as.data.frame(t(P))) %*% w
@@ -225,7 +225,7 @@ EqRao <- function(df, dis = NULL, structures = NULL, option = c("eq", "normed1",
         colnames(res) <- "Normed contributions to diversity"
       }
   } else {
-    div <- sapply(as.data.frame(t(P)), .diversity)
+    div <- sapply(as.data.frame(t(P)), .diversity, d=d)
     if (metmean == "arithmetic") 
       alphaEq <- sum(w * (1/(1 - div))) else alphaEq <- 1/(1 - sum(w * div))
       if (!(is.data.frame(structures))) 
