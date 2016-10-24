@@ -85,7 +85,7 @@ wapqe <- function(df, dis = NULL, structures = NULL, formula = c("QE", "EDI"),
           firstw <- table(structures[, 1])
           firstw <- 1/firstw[structures[, 1]]
           finalw <- 1/length(levels(structures[, ncol(structures)]))
-          forw <- cbind.data.frame(firstw, listw, rep(finalw, nrow(structures)))
+          forw <- cbind.data.frame(as.vector(firstw), as.vector(listw), as.vector(rep(finalw, nrow(structures))))
           w <- apply(forw, 1, prod)
         }
       }
