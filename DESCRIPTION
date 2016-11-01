@@ -7,7 +7,9 @@ Authors@R: c(
         person("Sandrine", "Pavoine", role = "aut", email = "pavoine@mnhn.fr"),
         person("Eric", "Marcon", role = "aut", email = "Eric.Marcon@ecofog.gf"),
         person("Carlo", "Ricotta", role = "aut", email = "carlo.ricotta@uniroma1.it"),
-        person("Vladimir", "Mikryukov", role = c("cre", "ctb"), email = "vmikryukov@gmail.com"))
+        person("Vladimir", "Mikryukov", role = c("cre", "ctb"), email = "vmikryukov@gmail.com"),
+        person("Jon", "Lefcheck", role = "ctb", email = "jslefche@vims.edu")
+    )
 Depends:
     R (>= 3.1.0),
     ade4
