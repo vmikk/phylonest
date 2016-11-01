@@ -1,7 +1,7 @@
 # Apportionment of quadratic entropy
 #' @title Rao’s apportionment of the quadratic entropy (APQE).
-#'
-#' The hierarchical apportionment of quadratic entropy defined by Rao (1982) wich allows biodiversity to be considered in terms of equivalent number of species, sites, regions, etc., in a nested hierarchy of multiple scales.
+#' @description The hierarchical apportionment of quadratic entropy defined by Rao (1982) wich allows biodiversity to be considered in terms of equivalent number of species, sites, regions, etc., in a nested hierarchy of multiple scales.
+#' 
 #' @param df Dataframe or matrix with sites as rows and species as columns. Entries are abundances of species within sites.
 #' @param dis Dissimilarity among species (NULL or class 'dist').
 #' @param structures Data frame that contains the name of the group (row) of an level (column) to which the site belongs. Sites in structures should be in the same order as in df. Default is NULL.

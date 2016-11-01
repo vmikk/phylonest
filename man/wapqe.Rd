@@ -2,9 +2,7 @@
 % Please edit documentation in R/wapqe.R
 \name{wapqe}
 \alias{wapqe}
-\title{Rao’s apportionment of the quadratic entropy (APQE).
-
-The hierarchical apportionment of quadratic entropy defined by Rao (1982) wich allows biodiversity to be considered in terms of equivalent number of species, sites, regions, etc., in a nested hierarchy of multiple scales.}
+\title{Rao’s apportionment of the quadratic entropy (APQE).}
 \usage{
 wapqe(df, dis = NULL, structures = NULL, formula = c("QE", "EDI"),
   wopt = c("even", "speciesab"), tol = 1e-08)
@@ -24,6 +22,9 @@ wapqe(df, dis = NULL, structures = NULL, formula = c("QE", "EDI"),
 }
 \value{
 A data frame with each component of the selected diversity decomposition.
+}
+\description{
+The hierarchical apportionment of quadratic entropy defined by Rao (1982) wich allows biodiversity to be considered in terms of equivalent number of species, sites, regions, etc., in a nested hierarchy of multiple scales.
 }
 \details{
 For the associated permutation test see \code{\link{randtestapqe}}.
