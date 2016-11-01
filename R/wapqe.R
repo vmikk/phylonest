@@ -1,6 +1,7 @@
 # Apportionment of quadratic entropy
-#' @title Apportionment of quadratic entropy.
+#' @title Rao’s apportionment of the quadratic entropy (APQE).
 #'
+#' The hierarchical apportionment of quadratic entropy defined by Rao (1982) wich allows biodiversity to be considered in terms of equivalent number of species, sites, regions, etc., in a nested hierarchy of multiple scales.
 #' @param df Dataframe or matrix with sites as rows and species as columns. Entries are abundances of species within sites.
 #' @param dis Dissimilarity among species (NULL or class 'dist').
 #' @param structures Data frame that contains the name of the group (row) of an level (column) to which the site belongs. Sites in structures should be in the same order as in df. Default is NULL.
@@ -13,8 +14,11 @@
 #'
 #' @return A data frame with each component of the selected diversity decomposition.
 #' @author Sandrine Pavoine, Eric Marcon, Carlo Ricotta.
-#' @references Pavoine, S., Marcon, E. and Ricotta, C. (2016), ‘Equivalent numbers’ for species, phylogenetic or functional diversity in a nested hierarchy of multiple scales. Methods Ecol Evol. DOI:10.1111/2041-210X.12591
-#' @seealso \code{\link{randtestEqRSintra}}, \code{\link{EqRS}}, \code{\link{EqRao}}.
+#' @references
+#' Pavoine, S., Marcon, E. and Ricotta, C. (2016), ‘Equivalent numbers’ for species, phylogenetic or functional diversity in a nested hierarchy of multiple scales. Methods Ecol Evol. DOI:10.1111/2041-210X.12591
+#' Rao, C.R. (1982) Diversity: its measurement, decomposition, apportionment and analysis. Sankhya: The Indian Journal of Statistics, A44, 1–22.
+#' Pavoine S. and Dolédec S. (2005) The apportionment of quadratic entropy: a useful alternative for partitioning diversity in ecological data. Environmental and Ecological Statistics, 12, 125–138. DOI:10.1007/s10651-005-1037-2
+#' @seealso \code{\link{randtestEqRSintra}}, \code{\link{EqRS}}, \code{\link{EqRao}}, \code{\link{apqe}} in ade4.
 #' 
 #' @examples
 #' data(macroloire)
