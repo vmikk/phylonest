@@ -16,7 +16,7 @@
 #'
 #' @return A list of class 'randtest', see \code{\link{randtest}}.
 #' @author Sandrine Pavoine, Eric Marcon, Carlo Ricotta.
-#' @references Pavoine, S., Marcon, E. and Ricotta, C. (2016), ‘Equivalent numbers’ for species, phylogenetic or functional diversity in a nested hierarchy of multiple scales. Methods Ecol Evol. DOI:10.1111/2041-210X.12591
+#' @references Pavoine, S., Marcon, E. and Ricotta, C. (2016), ‘Equivalent numbers’ for species, phylogenetic or functional diversity in a nested hierarchy of multiple scales. Methods Ecol Evol, 7: 1152–1163. DOI:10.1111/2041-210X.12591
 #' @seealso \code{\link{EqRSintra}}, \code{\link{randtest}}.
 #'
 #' @examples
