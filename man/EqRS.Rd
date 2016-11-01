@@ -22,6 +22,8 @@ EqRS(df, dis = NULL, structures = NULL, option = c("eq", "normed1",
 }
 \value{
 A data frame with each component of the selected diversity decomposition.
+
+Rescaled estimates of the beta components (option = "normed1" or "normed2") reach the maximum value of 1 when sites within a region are maximally dissimilar whatever the level of diversity within sites (e.g., within any region, sites do not share species and any species from any site always is maximally dissimilar from all species in all other sites); beta components should be equal 0 when sites are identical within regions.
 }
 \description{
 Use when the interest is in multiple-site and multiple-region beta diversity, the sampling design is even (same number of sites within regions), sites within a region can be given equal weights and regions can be given equal weights.
@@ -63,7 +65,7 @@ EqRS(ab, dSF, stru, formula = "QE", option="normed2")
 Sandrine Pavoine, Eric Marcon, Carlo Ricotta.
 }
 \references{
-Pavoine, S., Marcon, E. and Ricotta, C. (2016), ‘Equivalent numbers’ for species, phylogenetic or functional diversity in a nested hierarchy of multiple scales. Methods Ecol Evol. DOI:10.1111/2041-210X.12591
+Pavoine, S., Marcon, E. and Ricotta, C. (2016), ‘Equivalent numbers’ for species, phylogenetic or functional diversity in a nested hierarchy of multiple scales. Methods Ecol Evol, 7: 1152–1163. DOI:10.1111/2041-210X.12591
 }
 \seealso{
 \code{\link{randtestEqRS}}, \code{\link{EqRSintra}}, \code{\link{EqRao}}.
