@@ -13,6 +13,8 @@
 #' For the associated permutation test see \code{\link{randtestEqRS}}.
 #' 
 #' @return A data frame with each component of the selected diversity decomposition.
+#' 
+#' Rescaled estimates of the beta components (option = "normed1" or "normed2") reach the maximum value of 1 when sites within a region are maximally dissimilar whatever the level of diversity within sites (e.g., within any region, sites do not share species and any species from any site always is maximally dissimilar from all species in all other sites); beta components should be equal 0 when sites are identical within regions.
 #' @author Sandrine Pavoine, Eric Marcon, Carlo Ricotta.
 #' @references Pavoine, S., Marcon, E. and Ricotta, C. (2016), ‘Equivalent numbers’ for species, phylogenetic or functional diversity in a nested hierarchy of multiple scales. Methods Ecol Evol. DOI:10.1111/2041-210X.12591
 #' @seealso \code{\link{randtestEqRS}}, \code{\link{EqRSintra}}, \code{\link{EqRao}}.
