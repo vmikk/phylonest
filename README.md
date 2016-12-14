@@ -8,5 +8,5 @@ The code is based on the [Appendix S6](http://onlinelibrary.wiley.com/store/10.1
 devtools::install_github("vmikk/phylonest")
 ```
 
-# Citation
-Pavoine, S., Marcon, E. and Ricotta, C. (2016), ‘Equivalent numbers’ for species, phylogenetic or functional diversity in a nested hierarchy of multiple scales. Methods Ecol Evol. [doi:10.1111/2041-210X.12591](http://onlinelibrary.wiley.com/doi/10.1111/2041-210X.12591/abstract)
+# Method citation
+Pavoine, S., Marcon, E. and Ricotta, C. (2016), ‘Equivalent numbers’ for species, phylogenetic or functional diversity in a nested hierarchy of multiple scales. Methods Ecol Evol, 7: 1152–1163. [doi:10.1111/2041-210X.12591](http://onlinelibrary.wiley.com/doi/10.1111/2041-210X.12591/abstract)
