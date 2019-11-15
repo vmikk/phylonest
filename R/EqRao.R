@@ -22,13 +22,15 @@
 #'
 #' Formula type (argument 'formula'):
 #' \itemize{
-#' \item \strong{"QE"} -the definition of the quadratic entropy is following Rao (1982)
-#' \item \strong{"EDI"} - the Euclidean Diversity Index of Champely and Chessel (2002)
+#' \item \strong{"QE"} - the definition of the quadratic entropy is following Rao (1982);
+#' \item \strong{"EDI"} - the Euclidean Diversity Index of Champely and Chessel (2002).
 #' }
 #'
-#' Site weighting type:
-#' If wopt = "speciesab", then the sites will be weighted by their sum of species’ abundances.
-#' If wopt ="even", the sites will be evenly weighted within the factors defined by the parameter 'structures'.
+#' Site weighting type (argument 'wopt'):
+#' \itemize{
+#' \item \strong{"speciesab"} - the sites will be weighted by their sum of species’ abundances;
+#' \item \strong{"even"} - the sites will be evenly weighted within the factors defined by the parameter 'structures'.
+#' }
 #'
 #' For the associated permutation test see \code{\link{randtestEqRao}}.
 #'
