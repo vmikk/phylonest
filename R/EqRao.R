@@ -32,7 +32,10 @@
 #'
 #' @return A data frame with each component of the selected diversity decomposition.
 #' @author Sandrine Pavoine, Eric Marcon, Carlo Ricotta.
-#' @references Pavoine, S., Marcon, E. and Ricotta, C. (2016), ‘Equivalent numbers’ for species, phylogenetic or functional diversity in a nested hierarchy of multiple scales. Methods Ecol Evol, 7: 1152–1163. DOI:10.1111/2041-210X.12591
+#' @references
+#' Pavoine S., Marcon E., Ricotta C. (2016) ‘Equivalent numbers’ for species, phylogenetic or functional diversity in a nested hierarchy of multiple scales. Methods Ecol Evol, 7: 1152–1163. DOI:10.1111/2041-210X.12591
+#' de Bello F., Lavergne S., Meynard C.N., Lepš J., Thuiller W. (2010) The partitioning of diversity: showing Theseus a way out of the labyrinth. Journal of Vegetation Science, 21: 992–1000. DOI: 10.1111/j.1654-1103.2010.01195.x
+#' Villéger S., Miranda J.R., Hernandez D.F., Mouillot, D. (2012) Low functional beta-diversity despite high taxonomic beta-diversity among tropical estuarine fish communities. PLoS One, 7, e40679. DOI: 10.1371/journal.pone.0040679
 #' @seealso \code{\link{randtestEqRao}}, \code{\link{EqRS}}, \code{\link{EqRSintra}}.
 #' 
 #' @examples
