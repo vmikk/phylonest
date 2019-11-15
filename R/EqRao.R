@@ -13,10 +13,12 @@
 #'
 #' @details
 #' Rescaling types:
-#' - "eq" - the diversity components are given in terms of equivalent number of species, sites, regions etc.
-#' - "normed1" - the normed components of diversity will be returned with formula (1 – 1 / E) / (1 - 1 / Emax)
-#' - "normed2" - the normed components of diversity will be returned with formula (E – 1) / (Emax - 1).
-#' For Eα and Eγ, Emax=S (the number of species in the data set).
+#' \itemize{
+#' \item \strong{"eq"} - the diversity components are given in terms of equivalent number of species, sites, regions etc.;
+#' \item \strong{"normed1"} - the normed components of diversity will be returned with formula (1 – 1 / E) / (1 - 1 / Emax) [de Bello et al., 2010, Eqn 14];
+#' \item \strong{"normed2"} - the normed components of diversity will be returned with formula (E – 1) / (Emax - 1) [Villéger et al., 2012].
+#' }
+#' For Eβ, Emax = M (the number of sites). For Eα and Eγ, Emax=S (the number of species in the data set).
 #'
 #' Formula type:
 #' 
