@@ -38,6 +38,8 @@
 #' Pavoine S., Marcon E., Ricotta C. (2016) ‘Equivalent numbers’ for species, phylogenetic or functional diversity in a nested hierarchy of multiple scales. Methods Ecol Evol, 7: 1152-1163. DOI:10.1111/2041-210X.12591
 #' de Bello F., Lavergne S., Meynard C.N., Lepš J., Thuiller W. (2010) The partitioning of diversity: showing Theseus a way out of the labyrinth. Journal of Vegetation Science, 21: 992-1000. DOI: 10.1111/j.1654-1103.2010.01195.x
 #' Villéger S., Miranda J.R., Hernandez D.F., Mouillot, D. (2012) Low functional beta-diversity despite high taxonomic beta-diversity among tropical estuarine fish communities. PLoS One, 7, e40679. DOI: 10.1371/journal.pone.0040679
+#' Champely S., Chessel D. (2002) Measuring biological diversity using Euclidean metrics. Environmental and Ecological Statistics, 9, 167-177. DOI: 10.1023/A:1015170104476
+#' Rao C.R. (1982) Diversity and dissimilarity coefficients: a unified approach. Theoretical Population Biology, 21, 24-43. DOI: 10.1016/0040-5809(82)90004-1
 #' @seealso \code{\link{randtestEqRao}}, \code{\link{EqRS}}, \code{\link{EqRSintra}}.
 #' 
 #' @examples
