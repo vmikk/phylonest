@@ -12,7 +12,7 @@
 #' @param metmean Mean type - "arithmetic" or "harmonic" (default).
 #'
 #' @details
-#' Rescaling types:
+#' Rescaling types (argument 'option'):
 #' \itemize{
 #' \item \strong{"eq"} - the diversity components are given in terms of equivalent number of species, sites, regions etc.;
 #' \item \strong{"normed1"} - the normed components of diversity will be returned with formula (1 – 1 / E) / (1 - 1 / Emax) [de Bello et al., 2010, Eqn 14];
@@ -20,9 +20,11 @@
 #' }
 #' For Eβ, Emax = M (the number of sites). For Eα and Eγ, Emax=S (the number of species in the data set).
 #'
-#' Formula type:
-#' 
-#'
+#' Formula type (argument 'formula'):
+#' \itemize{
+#' \item \strong{"QE"} -the definition of the quadratic entropy is following Rao (1982)
+#' \item \strong{"EDI"} - the Euclidean Diversity Index of Champely and Chessel (2002)
+#' }
 #'
 #' Site weighting type:
 #' If wopt = "speciesab", then the sites will be weighted by their sum of species’ abundances.
@@ -33,8 +35,8 @@
 #' @return A data frame with each component of the selected diversity decomposition.
 #' @author Sandrine Pavoine, Eric Marcon, Carlo Ricotta.
 #' @references
-#' Pavoine S., Marcon E., Ricotta C. (2016) ‘Equivalent numbers’ for species, phylogenetic or functional diversity in a nested hierarchy of multiple scales. Methods Ecol Evol, 7: 1152–1163. DOI:10.1111/2041-210X.12591
-#' de Bello F., Lavergne S., Meynard C.N., Lepš J., Thuiller W. (2010) The partitioning of diversity: showing Theseus a way out of the labyrinth. Journal of Vegetation Science, 21: 992–1000. DOI: 10.1111/j.1654-1103.2010.01195.x
+#' Pavoine S., Marcon E., Ricotta C. (2016) ‘Equivalent numbers’ for species, phylogenetic or functional diversity in a nested hierarchy of multiple scales. Methods Ecol Evol, 7: 1152-1163. DOI:10.1111/2041-210X.12591
+#' de Bello F., Lavergne S., Meynard C.N., Lepš J., Thuiller W. (2010) The partitioning of diversity: showing Theseus a way out of the labyrinth. Journal of Vegetation Science, 21: 992-1000. DOI: 10.1111/j.1654-1103.2010.01195.x
 #' Villéger S., Miranda J.R., Hernandez D.F., Mouillot, D. (2012) Low functional beta-diversity despite high taxonomic beta-diversity among tropical estuarine fish communities. PLoS One, 7, e40679. DOI: 10.1371/journal.pone.0040679
 #' @seealso \code{\link{randtestEqRao}}, \code{\link{EqRS}}, \code{\link{EqRSintra}}.
 #' 
