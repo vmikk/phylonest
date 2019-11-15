@@ -32,6 +32,12 @@
 #' \item \strong{"even"} - the sites will be evenly weighted within the factors defined by the parameter 'structures'.
 #' }
 #'
+#' Mean type (argument 'metmean'):
+#' \itemize{
+#' \item \strong{"arithmetic"} - the calculation of Eβ will be performed using an arithmetic mean;
+#' \item \strong{"harmonic"} - the calculation of Eβ will be performed using an harmonic mean.
+#' }
+#' 
 #' For the associated permutation test see \code{\link{randtestEqRao}}.
 #'
 #' @return A data frame with each component of the selected diversity decomposition.
