@@ -1,5 +1,5 @@
 Package: phylonest
-Version: 0.0-2
+Version: 0.0-3
 Date: 2016-09-23
 Title: Equivalent numbers for biodiversity in a nested hierarchy of multiple
     scales.
@@ -19,4 +19,4 @@ License: GPL (>= 2)
 URL: https://github.com/vmikk/phylonest
 BugReports: https://github.com/vmikk/phylonest/issues
 Encoding: UTF-8
-RoxygenNote: 5.0.1
+RoxygenNote: 7.0.0
