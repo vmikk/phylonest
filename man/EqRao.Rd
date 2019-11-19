@@ -4,9 +4,16 @@
 \alias{EqRao}
 \title{Third decomposition of diversity introduced in Pavoine et al. 2016.}
 \usage{
-EqRao(df, dis = NULL, structures = NULL, option = c("eq", "normed1",
-  "normed2"), formula = c("QE", "EDI"), wopt = c("even", "speciesab"),
-  tol = 1e-08, metmean = c("harmonic", "arithmetic"))
+EqRao(
+  df,
+  dis = NULL,
+  structures = NULL,
+  option = c("eq", "normed1", "normed2"),
+  formula = c("QE", "EDI"),
+  wopt = c("even", "speciesab"),
+  tol = 1e-08,
+  metmean = c("harmonic", "arithmetic")
+)
 }
 \arguments{
 \item{df}{Dataframe or matrix with sites as rows and species as columns. Entries are abundances of species within sites.}
@@ -32,19 +39,31 @@ A data frame with each component of the selected diversity decomposition.
 Use when the interest is in beta diversity expressed in terms of pairwise dissimilarities among sites (within regions) and among regions and/or sites within a region have different weights and regions have different weights (due, e.g., to uneven sampling pressures, uneven size of sites or regions).
 }
 \details{
-Rescaling types:
-- "eq" - the diversity components are given in terms of equivalent number of species, sites, regions etc.
-- "normed1" - the normed components of diversity will be returned with formula (1 – 1 / E) / (1 - 1 / Emax)
-- "normed2" - the normed components of diversity will be returned with formula (E – 1) / (Emax - 1).
-For Eα and Eγ, Emax=S (the number of species in the data set).
+Rescaling types (argument 'option'):
+\itemize{
+\item \strong{"eq"} - the diversity components are given in terms of equivalent number of species, sites, regions etc.;
+\item \strong{"normed1"} - the normed components of diversity will be returned with formula (1 – 1 / E) / (1 - 1 / Emax) [de Bello et al., 2010, Eqn 14];
+\item \strong{"normed2"} - the normed components of diversity will be returned with formula (E – 1) / (Emax - 1) [Villéger et al., 2012].
+}
+For Eβ, Emax = M (the number of sites). For Eα and Eγ, Emax=S (the number of species in the data set).
 
-Formula type:
+Formula type (argument 'formula'):
+\itemize{
+\item \strong{"QE"} - the definition of the quadratic entropy is following Rao (1982);
+\item \strong{"EDI"} - the Euclidean Diversity Index of Champely and Chessel (2002).
+}
 
+Site weighting type (argument 'wopt'):
+\itemize{
+\item \strong{"speciesab"} - the sites will be weighted by their sum of species’ abundances;
+\item \strong{"even"} - the sites will be evenly weighted within the factors defined by the parameter 'structures'.
+}
 
-
-Site weighting type:
-If wopt = "speciesab", then the sites will be weighted by their sum of species’ abundances.
-If wopt ="even", the sites will be evenly weighted within the factors defined by the parameter 'structures'.
+Mean type (argument 'metmean'):
+\itemize{
+\item \strong{"arithmetic"} - the calculation of Eβ will be performed using an arithmetic mean;
+\item \strong{"harmonic"} - the calculation of Eβ will be performed using an harmonic mean.
+}
 
 For the associated permutation test see \code{\link{randtestEqRao}}.
 }
@@ -78,13 +97,20 @@ EqRao(ab, dFeed, stru, formula = "QE", option="normed2")
 EqRao(ab, dSF, stru, formula = "QE", option="normed2")
 
 }
-\author{
-Sandrine Pavoine, Eric Marcon, Carlo Ricotta.
-}
 \references{
-Pavoine, S., Marcon, E. and Ricotta, C. (2016), ‘Equivalent numbers’ for species, phylogenetic or functional diversity in a nested hierarchy of multiple scales. Methods Ecol Evol, 7: 1152–1163. DOI:10.1111/2041-210X.12591
+Pavoine S., Marcon E., Ricotta C. (2016) ‘Equivalent numbers’ for species, phylogenetic or functional diversity in a nested hierarchy of multiple scales. Methods Ecol Evol, 7: 1152-1163. DOI:10.1111/2041-210X.12591
+
+de Bello F., Lavergne S., Meynard C.N., Lepš J., Thuiller W. (2010) The partitioning of diversity: showing Theseus a way out of the labyrinth. Journal of Vegetation Science, 21: 992-1000. DOI: 10.1111/j.1654-1103.2010.01195.x
+
+Villéger S., Miranda J.R., Hernandez D.F., Mouillot, D. (2012) Low functional beta-diversity despite high taxonomic beta-diversity among tropical estuarine fish communities. PLoS One, 7, e40679. DOI: 10.1371/journal.pone.0040679
+
+Champely S., Chessel D. (2002) Measuring biological diversity using Euclidean metrics. Environmental and Ecological Statistics, 9, 167-177. DOI: 10.1023/A:1015170104476
+
+Rao C.R. (1982) Diversity and dissimilarity coefficients: a unified approach. Theoretical Population Biology, 21, 24-43. DOI: 10.1016/0040-5809(82)90004-1
 }
 \seealso{
 \code{\link{randtestEqRao}}, \code{\link{EqRS}}, \code{\link{EqRSintra}}.
 }
-
+\author{
+Sandrine Pavoine, Eric Marcon, Carlo Ricotta.
+}
