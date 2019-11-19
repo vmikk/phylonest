@@ -4,9 +4,15 @@
 \alias{EqRSintra}
 \title{Second decomposition of diversity introduced in Pavoine et al. 2016.}
 \usage{
-EqRSintra(df, dis = NULL, structures = NULL, option = c("eq", "normed1",
-  "normed2"), formula = c("QE", "EDI"), tol = 1e-08,
-  metmean = c("harmonic", "arithmetic"))
+EqRSintra(
+  df,
+  dis = NULL,
+  structures = NULL,
+  option = c("eq", "normed1", "normed2"),
+  formula = c("QE", "EDI"),
+  tol = 1e-08,
+  metmean = c("harmonic", "arithmetic")
+)
 }
 \arguments{
 \item{df}{Dataframe or matrix with sites as rows and species as columns. Entries are abundances of species within sites.}
@@ -62,13 +68,12 @@ EqRSintra(ab, dFeed, stru, formula = "QE", option="normed2")
 EqRSintra(ab, dSF, stru, formula = "QE", option="normed2")
 
 }
-\author{
-Sandrine Pavoine, Eric Marcon, Carlo Ricotta.
-}
 \references{
 Pavoine, S., Marcon, E. and Ricotta, C. (2016), ‘Equivalent numbers’ for species, phylogenetic or functional diversity in a nested hierarchy of multiple scales. Methods Ecol Evol, 7: 1152–1163. DOI:10.1111/2041-210X.12591
 }
 \seealso{
 \code{\link{randtestEqRSintra}}, \code{\link{EqRS}}, \code{\link{EqRao}}.
 }
-
+\author{
+Sandrine Pavoine, Eric Marcon, Carlo Ricotta.
+}
