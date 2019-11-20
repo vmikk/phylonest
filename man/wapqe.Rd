@@ -4,8 +4,14 @@
 \alias{wapqe}
 \title{Rao’s apportionment of the quadratic entropy (APQE).}
 \usage{
-wapqe(df, dis = NULL, structures = NULL, formula = c("QE", "EDI"),
-  wopt = c("even", "speciesab"), tol = 1e-08)
+wapqe(
+  df,
+  dis = NULL,
+  structures = NULL,
+  formula = c("QE", "EDI"),
+  wopt = c("even", "speciesab"),
+  tol = 1e-08
+)
 }
 \arguments{
 \item{df}{Dataframe or matrix with sites as rows and species as columns. Entries are abundances of species within sites.}
@@ -53,9 +59,6 @@ wapqe(ab, dFeed, stru, formula = "QE")
 wapqe(ab, dSF, stru, formula = "QE")
 
 }
-\author{
-Sandrine Pavoine, Eric Marcon, Carlo Ricotta.
-}
 \references{
 Pavoine, S., Marcon, E. and Ricotta, C. (2016), ‘Equivalent numbers’ for species, phylogenetic or functional diversity in a nested hierarchy of multiple scales. Methods Ecol Evol, 7: 1152–1163. DOI:10.1111/2041-210X.12591
 Rao, C.R. (1982) Diversity: its measurement, decomposition, apportionment and analysis. Sankhya: The Indian Journal of Statistics, A44, 1–22.
@@ -64,4 +67,6 @@ Pavoine S. and Dolédec S. (2005) The apportionment of quadratic entropy: a usef
 \seealso{
 \code{\link{randtestEqRSintra}}, \code{\link{EqRS}}, \code{\link{EqRao}}, \code{\link{apqe}} in ade4.
 }
-
+\author{
+Sandrine Pavoine, Eric Marcon, Carlo Ricotta.
+}
